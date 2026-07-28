@@ -1,226 +1,1166 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Dra. Thadila Fogaça — Programa Digital para Parar de Fumar</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-body{font-family:'Inter',sans-serif;font-feature-settings:'cv01','ss03';background:#08090a;color:#f7f8f8;line-height:1.7}
-h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;font-weight:600;letter-spacing:-0.02em}
-h1{font-size:clamp(2rem,5vw,3.8rem);line-height:1.15;color:#f7f8f8}
-h2{font-size:clamp(1.6rem,3.5vw,2.8rem);line-height:1.2;margin-bottom:1rem;color:#f7f8f8}
-h3{font-size:clamp(1.1rem,2vw,1.5rem);line-height:1.3;color:#f7f8f8}
-p{font-weight:300;color:#8a8f98;font-size:clamp(0.9rem,1.2vw,1.05rem);line-height:1.7}
-a{text-decoration:none;color:inherit}
-.container{max-width:1100px;margin:0 auto;padding:0 20px}
-.section{padding:clamp(3rem,8vw,6rem) 0}
-.accent{color:#c9a84c}
-header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,9,10,0.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.05);padding:0 20px}
-header .container{display:flex;justify-content:space-between;align-items:center;height:60px}
-header .logo{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;color:#c9a84c}
-header nav a{color:#8a8f98;font-size:0.8rem;font-weight:500;margin-left:24px;transition:color .2s}
-header nav a:hover{color:#f7f8f8}
-.hero{min-height:100vh;display:flex;align-items:center;text-align:center;padding-top:60px;background:radial-gradient(ellipse at 50% 0%,rgba(201,168,76,0.06) 0%,transparent 70%)}
-.hero p{font-size:clamp(1rem,1.5vw,1.2rem);max-width:600px;margin:1.5rem auto 2rem;color:#d0d6e0}
-.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:8px;font-size:0.9rem;font-weight:600;transition:all .2s;cursor:pointer;border:none}
-.btn-primary{background:#c9a84c;color:#08090a}
-.btn-primary:hover{background:#d4b85a;transform:translateY(-1px)}
-.btn-ghost{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:#d0d6e0}
-.btn-ghost:hover{background:rgba(255,255,255,0.08);color:#f7f8f8}
-.section-title{text-align:center;margin-bottom:3rem}
-.section-title h2::after{content:'';display:block;width:50px;height:2px;background:#c9a84c;margin:0.8rem auto 0}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-@media(max-width:700px){.about-grid{grid-template-columns:1fr}}
-.ben-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-@media(max-width:700px){.ben-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:480px){.ben-grid{grid-template-columns:1fr}}
-.ben-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:24px;text-align:center;transition:all .2s}
-.ben-card:hover{border-color:rgba(201,168,76,0.3);transform:translateY(-2px)}
-.ben-card .icon{font-size:2rem;margin-bottom:12px}
-.ben-card h3{font-size:1rem;margin-bottom:6px}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-@media(max-width:700px){.steps{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:480px){.steps{grid-template-columns:1fr}}
-.step{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:24px;position:relative}
-.step .num{position:absolute;top:-8px;left:-8px;width:32px;height:32px;border-radius:50%;background:#c9a84c;color:#08090a;display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:700}
-.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:700px;margin:0 auto}
-@media(max-width:600px){.price-grid{grid-template-columns:1fr}}
-.price-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:32px;text-align:center}
-.price-card.featured{border-color:#c9a84c;background:rgba(201,168,76,0.04)}
-.price-card .price{font-size:2.5rem;font-weight:700;color:#c9a84c;margin:12px 0}
-.price-card .price span{font-size:1rem;color:#8a8f98;font-weight:400}
-.price-card ul{list-style:none;margin:20px 0;text-align:left}
-.price-card ul li{padding:8px 0;font-size:0.9rem;color:#d0d6e0;border-bottom:1px solid rgba(255,255,255,0.04)}
-.price-card ul li::before{content:'✓';color:#c9a84c;margin-right:10px}
-.feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-@media(max-width:800px){.feat-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:480px){.feat-grid{grid-template-columns:1fr}}
-.feat-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:20px;text-align:center}
-.feat-card .icon{font-size:1.5rem;margin-bottom:8px}
-.feat-card h4{font-family:'Inter',sans-serif;font-size:0.85rem;font-weight:600;color:#f7f8f8}
-.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-@media(max-width:700px){.test-grid{grid-template-columns:1fr}}
-.test-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:24px}
-.test-card .stars{color:#c9a84c;margin-bottom:8px;font-size:0.9rem}
-.test-card p{font-size:0.9rem;font-style:italic;margin-bottom:12px}
-.test-card .author{font-size:0.8rem;color:#62666d}
-.faq-item{border-bottom:1px solid rgba(255,255,255,0.06)}
-.faq-q{display:flex;justify-content:space-between;align-items:center;padding:16px 0;cursor:pointer;font-size:0.95rem;font-weight:500;color:#d0d6e0;background:0 0;border:none;width:100%;text-align:left}
-.faq-q .arrow{transition:transform .2s;color:#c9a84c}
-.faq-q.open .arrow{transform:rotate(180deg)}
-.faq-a{padding:0 0 16px;display:none;font-size:0.9rem;color:#8a8f98}
-.faq-a.open{display:block}
-footer{background:#0f1011;border-top:1px solid rgba(255,255,255,0.05);padding:40px 0}
-footer .grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}
-@media(max-width:600px){footer .grid{grid-template-columns:1fr}}
-footer h4{font-family:'Inter',sans-serif;font-size:0.8rem;font-weight:600;color:#f7f8f8;margin-bottom:12px;text-transform:uppercase;letter-spacing:1px}
-footer a{display:block;color:#8a8f98;font-size:0.85rem;margin-bottom:6px}
-footer a:hover{color:#c9a84c}
-.whatsapp{position:fixed;bottom:24px;right:24px;width:56px;height:56px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;z-index:99;box-shadow:0 4px 16px rgba(37,211,102,0.3)}
-.whatsapp:hover{transform:scale(1.1)}
-.whatsapp svg{width:28px;height:28px;fill:#fff}
-.reveal{opacity:0;transform:translateY(20px);transition:all .6s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dra. Thadila Fogaça — Psiquiatra Especialista em Tabagismo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #050505;
+            --surface-color: #121212;
+            --surface-light: #1e1e1e;
+            --accent-gold: #D4AF37;
+            --accent-gold-hover: #F3E5AB;
+            --text-main: #F7F8F8;
+            --text-muted: #A1A1AA;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--text-main);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: clamp(1rem, 1.2vw, 1.125rem);
+            font-weight: 300;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section {
+            padding: clamp(4rem, 10vw, 8rem) 0;
+        }
+
+        .accent {
+            color: var(--accent-gold);
+            font-style: italic;
+        }
+
+        /* --- Header --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent-gold);
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        .nav-cta {
+            background-color: transparent;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold) !important;
+            padding: 8px 20px;
+            border-radius: 4px;
+        }
+
+        .nav-cta:hover {
+            background-color: var(--accent-gold);
+            color: var(--bg-color) !important;
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background-color: var(--text-main);
+            transition: var(--transition);
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                position: fixed;
+                top: 72px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 72px);
+                background-color: var(--bg-color);
+                flex-direction: column;
+                justify-content: center;
+                gap: 2rem;
+                transition: var(--transition);
+            }
+            nav.active {
+                left: 0;
+            }
+            .menu-toggle {
+                display: flex;
+            }
+            .menu-toggle.active span:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.active span:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+        }
+
+        /* --- Buttons --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 32px;
+            font-size: 1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #b8860b 100%);
+            color: #000;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+            background: linear-gradient(135deg, var(--accent-gold-hover) 0%, var(--accent-gold) 100%);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 72px;
+            background: radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.08) 0%, transparent 60%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)" opacity="0.05"/></svg>');
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 1.5vw, 1.25rem);
+            max-width: 650px;
+            margin: 0 auto 3rem;
+            color: #d0d6e0;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* --- Section Titles --- */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header p {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.875rem;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        /* --- About Section --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        .about-image {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(212,175,55,0.1) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .about-image .icon-large {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- Benefits Section --- */
+        .benefits {
+            background-color: #080808;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .ben-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .ben-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2.5rem 2rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ben-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent-gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .ben-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .ben-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .ben-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .ben-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* --- Program Steps --- */
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            counter-reset: step-counter;
+        }
+
+        .step-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem 2rem;
+            border-radius: 8px;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .step-card:hover {
+            background: var(--surface-light);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .step-card::before {
+            counter-increment: step-counter;
+            content: "0" counter(step-counter);
+            position: absolute;
+            top: -20px;
+            left: 2rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--bg-color);
+            text-shadow: -1px -1px 0 var(--accent-gold), 1px -1px 0 var(--accent-gold), -1px 1px 0 var(--accent-gold), 1px 1px 0 var(--accent-gold);
+            opacity: 0.8;
+        }
+
+        .step-card h3 {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        /* --- Plans / Pricing --- */
+        .plans {
+            background-color: #080808;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .price-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 3rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+        }
+
+        .price-card.premium {
+            background: linear-gradient(180deg, var(--surface-light) 0%, var(--surface-color) 100%);
+            border-color: rgba(212, 175, 55, 0.5);
+            transform: scale(1.02);
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .price-card.premium::after {
+            content: 'Mais Escolhido';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-gold);
+            color: #000;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 16px;
+            border-radius: 20px;
+        }
+
+        .price-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 2rem;
+            line-height: 1;
+        }
+
+        .price span {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .price-card ul {
+            list-style: none;
+            margin-bottom: 2.5rem;
+            flex-grow: 1;
+        }
+
+        .price-card ul li {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: #d0d6e0;
+        }
+
+        .price-card ul li::before {
+            content: '✦';
+            color: var(--accent-gold);
+            font-size: 0.9rem;
+        }
+
+        .price-card .btn {
+            width: 100%;
+        }
+
+        /* --- Testimonials --- */
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .test-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .test-card::before {
+            content: '"';
+            font-family: 'Playfair Display', serif;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 5rem;
+            color: rgba(212, 175, 55, 0.1);
+            line-height: 1;
+        }
+
+        .stars {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .test-card p {
+            font-style: italic;
+            color: #d0d6e0;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .author {
+            font-weight: 500;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- FAQ --- */
+        .faq {
+            background-color: #080808;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .faq-q {
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            padding: 1.5rem 0;
+            font-size: 1.1rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            color: var(--text-main);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .faq-q:hover {
+            color: var(--accent-gold);
+        }
+
+        .faq-q .icon {
+            font-size: 1.5rem;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+            color: var(--accent-gold);
+        }
+
+        .faq-q.active .icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .faq-a-content {
+            padding-bottom: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        /* --- CTA Section --- */
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(to top, rgba(212, 175, 55, 0.05) 0%, transparent 100%);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .cta-section h2 {
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #020202;
+            padding: 5rem 0 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .footer-logo span {
+            color: var(--accent-gold);
+        }
+
+        footer h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+
+        footer ul {
+            list-style: none;
+        }
+
+        footer ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        footer a {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        footer a:hover {
+            color: var(--accent-gold);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            background: var(--surface-color);
+        }
+
+        .social-links a:hover {
+            border-color: var(--accent-gold);
+            background: var(--accent-gold);
+            color: #000;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+        /* --- WhatsApp Float --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #20b858;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-float svg {
+            width: 32px;
+            height: 32px;
+            fill: currentColor;
+        }
+
+        /* --- Animations --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+
+    </style>
 </head>
 <body>
-<header>
-<div class="container">
-<div class="logo">Dra. Thadila.</div>
-<nav id="nav">
-<a href="#sobre">Sobre</a>
-<a href="#beneficios">Beneficios</a>
-<a href="#programa">Programa</a>
-<a href="#planos">Planos</a>
-<a href="#faq">FAQ</a>
-<a href="#planos" style="color:#c9a84c;font-weight:600">Comecar</a>
-</nav>
-</div>
-</header>
-<section class="hero section">
-<div class="container">
-<h1>Comece sua jornada para<br>abandonar o cigarro com<br><span class="accent">orientacao especializada</span></h1>
-<p>Programa digital desenvolvido pela Dra. Thadila Fogaca para ajudar voce a parar de fumar com acompanhamento medico, suporte emocional e ferramentas comprovadas.</p>
-<div class="hero-btns">
-<a href="#planos" class="btn btn-primary">Quero comecar →</a>
-<a href="#programa" class="btn btn-ghost">Conhecer o Programa</a>
-</div>
-</div>
-</section>
-<section id="sobre" class="section">
-<div class="container">
-<div class="section-title"><h2>Sobre a <span class="accent">Dra. Thadila</span></h2><p>Medicina com proposito, acolhimento com excelencia.</p></div>
-<div class="about-grid">
-<div class="about-text"><p>A Dra. Thadila Fogaca e medica especializada no tratamento do tabagismo, com mais de 10 anos de experiencia ajudando pacientes a retomarem o controle de suas vidas.</p><p>Sua abordagem combina conhecimento medico atualizado com um olhar humanizado, criando programas personalizados que respeitam o tempo e as necessidades de cada paciente.</p></div>
-<div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:40px;text-align:center;display:flex;align-items:center;justify-content:center;min-height:200px"><div style="font-size:4rem;margin-bottom:12px">👩‍⚕️</div><p style="color:#d0d6e0">CRM: 12345</p></div>
-</div>
-</div>
-</section>
-<section id="beneficios" class="section" style="background:rgba(255,255,255,0.01)">
-<div class="container">
-<div class="section-title"><h2>O que voce ganha ao <span class="accent">parar de fumar</span></h2></div>
-<div class="ben-grid">
-<div class="ben-card reveal"><div class="icon">❤️</div><h3>Mais saude</h3><p>Recupere sua capacidade pulmonar e reduza riscos de doencas.</p></div>
-<div class="ben-card reveal"><div class="icon">🕊️</div><h3>Mais liberdade</h3><p>Sem depender do cigarro para momentos de estresse.</p></div>
-<div class="ben-card reveal"><div class="icon">⚡</div><h3>Mais disposicao</h3><p>Aumento de energia para suas atividades diarias.</p></div>
-<div class="ben-card reveal"><div class="icon">🌟</div><h3>Mais qualidade de vida</h3><p>Melhora do paladar, olfato, pele e sono.</p></div>
-<div class="ben-card reveal"><div class="icon">💰</div><h3>Mais economia</h3><p>Economia de ate R$ 500/mes que iam para o cigarro.</p></div>
-<div class="ben-card reveal"><div class="icon">👨‍👩‍👧‍👦</div><h3>Mais tempo com quem ama</h3><p>Mais anos de vida ao lado de quem importa.</p></div>
-</div>
-</div>
-</section>
-<section id="programa" class="section">
-<div class="container">
-<div class="section-title"><h2>Como funciona <span class="accent">o programa</span></h2></div>
-<div class="steps">
-<div class="step reveal"><div class="num">1</div><h3>Avaliacao Inicial</h3><p>Questionario para entender seu historico.</p></div>
-<div class="step reveal"><div class="num">2</div><h3>Identificacao do Perfil</h3><p>Analise de dependencia e gatilhos.</p></div>
-<div class="step reveal"><div class="num">3</div><h3>Plano Personalizado</h3><p>Estrategia sob medida para voce.</p></div>
-<div class="step reveal"><div class="num">4</div><h3>Programa Digital</h3><p>Missoes diarias e ferramentas online.</p></div>
-<div class="step reveal"><div class="num">5</div><h3>Comunidade</h3><p>Apoio de outras pessoas na jornada.</p></div>
-<div class="step reveal"><div class="num">6</div><h3>Nova Fase da Vida</h3><p>Acompanhamento para manter resultados.</p></div>
-</div>
-</div>
-</section>
-<section id="planos" class="section" style="background:rgba(255,255,255,0.01)">
-<div class="container">
-<div class="section-title"><h2>Escolha o programa <span class="accent">ideal para voce</span></h2></div>
-<div class="price-grid">
-<div class="price-card reveal">
-<h3>Kit de Inicio</h3>
-<div class="price">R$ 47<span>/unico</span></div>
-<ul><li>Guia digital completo</li><li>Avaliacao inicial</li><li>Plano personalizado</li><li>Acesso por 30 dias</li><li>Suporte via WhatsApp</li></ul>
-<a href="#" class="btn btn-ghost" style="width:100%">Quero comecar →</a>
-</div>
-<div class="price-card featured reveal">
-<h3>Programa 21 Dias</h3>
-<div class="price">R$ 97<span>/unico</span></div>
-<ul><li>Tudo do Kit de Inicio</li><li>Programa digital completo</li><li>Missoes diarias</li><li>Comunidade exclusiva</li><li>Botao SOS anti-recaida</li><li>Acompanhamento 90 dias</li></ul>
-<a href="#" class="btn btn-primary" style="width:100%">Entrar no Programa →</a>
-</div>
-</div>
-</div>
-</section>
-<section class="section">
-<div class="container">
-<div class="section-title"><h2>Seu acompanhamento na <span class="accent">palma da mao</span></h2></div>
-<div class="feat-grid">
-<div class="feat-card reveal"><div class="icon">📋</div><h4>Perfil</h4></div>
-<div class="feat-card reveal"><div class="icon">🎯</div><h4>Missoes</h4></div>
-<div class="feat-card reveal"><div class="icon">📅</div><h4>Calendario</h4></div>
-<div class="feat-card reveal"><div class="icon">🏆</div><h4>Gameficacao</h4></div>
-<div class="feat-card reveal"><div class="icon">📊</div><h4>Dias sem fumar</h4></div>
-<div class="feat-card reveal"><div class="icon">💰</div><h4>Economia</h4></div>
-<div class="feat-card reveal"><div class="icon">🆘</div><h4>SOS</h4></div>
-<div class="feat-card reveal"><div class="icon">👥</div><h4>Comunidade</h4></div>
-</div>
-</div>
-</section>
-<section class="section" style="background:rgba(255,255,255,0.01)">
-<div class="container">
-<div class="section-title"><h2>O que dizem quem ja <span class="accent">passou por aqui</span></h2></div>
-<div class="test-grid">
-<div class="test-card reveal"><div class="stars">★★★★★</div><p>"8 meses sem fumar! So consegui com o programa da Dra. Thadila."</p><div class="author">— Maria C., 42 anos</div></div>
-<div class="test-card reveal"><div class="stars">★★★★★</div><p>"A abordagem medica combinada com suporte diario fez toda diferenca."</p><div class="author">— Carlos A., 35 anos</div></div>
-<div class="test-card reveal"><div class="stars">★★★★★</div><p>"O botao SOS me salvou em varios momentos. Hoje sou uma pessoa nova!"</p><div class="author">— Juliana M., 28 anos</div></div>
-</div>
-</div>
-</section>
-<section id="faq" class="section">
-<div class="container">
-<div class="section-title"><h2>Perguntas <span class="accent">Frequentes</span></h2></div>
-<div class="faq-item"><button class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Como funciona o programa digital?<span class="arrow">▼</span></button><div class="faq-a">Apos a inscricao, voce recebe acesso a plataforma online com missoes diarias, calendario personalizado e comunidade exclusiva.</div></div>
-<div class="faq-item"><button class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Preciso de consulta medica presencial?<span class="arrow">▼</span></button><div class="faq-a">Nao. Todo o programa e digital. Caso precise, a Dra. Thadila orienta os proximos passos.</div></div>
-<div class="faq-item"><button class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Funciona para quem ja tentou parar?<span class="arrow">▼</span></button><div class="faq-a">Sim! O programa e desenhado para quem ja tentou antes, ajustando a estrategia ao seu perfil.</div></div>
-<div class="faq-item"><button class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Diferenca entre Kit e Programa 21 Dias?<span class="arrow">▼</span></button><div class="faq-a">Kit: guia + avaliacao. Programa 21 Dias: plataforma completa com missoes, comunidade e botao SOS.</div></div>
-<div class="faq-item"><button class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Por quanto tempo tenho acesso?<span class="arrow">▼</span></button><div class="faq-a">Kit: 30 dias. Programa 21 Dias: 90 dias de acesso completo.</div></div>
-</div>
-</section>
-<section class="section" style="text-align:center;background:radial-gradient(ellipse at 50% 100%,rgba(201,168,76,0.06) 0%,transparent 70%)">
-<div class="container">
-<h2>O primeiro passo para uma vida<br>sem cigarro pode <span class="accent">comecar hoje</span></h2>
-<p style="margin:1rem auto 2rem;max-width:500px;color:#d0d6e0">Milhares de pessoas ja transformaram suas vidas. A sua vez chegou.</p>
-<div class="hero-btns"><a href="#planos" class="btn btn-primary">Quero o Kit →</a><a href="#planos" class="btn btn-ghost">Entrar no Programa</a></div>
-</div>
-</section>
-<footer>
-<div class="container">
-<div class="grid">
-<div><h4>Dra. Thadila.</h4><p style="font-size:0.85rem;color:#8a8f98">Medicina com proposito. Acolhimento com excelencia.</p><div style="margin-top:12px"><a href="#">Instagram</a><a href="#">WhatsApp</a><a href="#">E-mail</a></div></div>
-<div><h4>Navegacao</h4><a href="#sobre">Sobre</a><a href="#beneficios">Beneficios</a><a href="#programa">Programa</a><a href="#faq">FAQ</a></div>
-<div><h4>Legal</h4><a href="#">Politica de Privacidade</a><a href="#">LGPD</a><a href="#">Termos de Uso</a></div>
-</div>
-<div style="text-align:center;margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.05);color:#62666d;font-size:0.8rem">© 2026 Dra. Thadila Fogaca. Todos os direitos reservados.</div>
-</div>
-</footer>
-<a href="https://wa.me/5511999999999" target="_blank" class="whatsapp" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
-<script>
-var r=new IntersectionObserver(function(e){e.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');r.unobserve(e.target)}})},{threshold:.1});
-document.querySelectorAll('.reveal').forEach(function(e){r.observe(e)});
-</script>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <a href="#" class="logo">Dra. Thadila<span>.</span></a>
+            <nav id="navbar">
+                <a href="#sobre" class="nav-link">Sobre</a>
+                <a href="#beneficios" class="nav-link">Benefícios</a>
+                <a href="#programa" class="nav-link">O Programa</a>
+                <a href="#depoimentos" class="nav-link">Depoimentos</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+                <a href="#planos" class="nav-cta">Começar Agora</a>
+            </nav>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content reveal">
+                <h1>Retome o controle da sua vida com <span class="accent">excelência</span> e <span class="accent">cuidado</span></h1>
+                <p>O programa digital definitivo de alto padrão, desenvolvido pela Dra. Thadila Fogaça, psiquiatra especialista em tabagismo. Abandone o cigarro com orientação médica precisa e suporte contínuo.</p>
+                <div class="hero-btns">
+                    <a href="#planos" class="btn btn-primary">Iniciar Jornada</a>
+                    <a href="#sobre" class="btn btn-outline">Conhecer a Doutora</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre" class="section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image reveal">
+                    <div class="icon-large">⚕️</div>
+                    <h3 style="color: var(--accent-gold); font-family: 'Inter', sans-serif; font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 500;">CRM 12345</h3>
+                </div>
+                <div class="about-text reveal delay-1">
+                    <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+                        <p>A Especialista</p>
+                        <h2>Sobre a <span class="accent">Dra. Thadila Fogaça</span></h2>
+                    </div>
+                    <p>Com mais de uma década de dedicação exclusiva à saúde mental e ao tratamento do tabagismo, a Dra. Thadila Fogaça alia o rigor científico da psiquiatria a uma escuta verdadeiramente humanizada.</p>
+                    <p>Seu propósito é oferecer um acompanhamento de elite, desenhado para pessoas que exigem resultados estruturados, discrição e respeito absoluto ao seu tempo.</p>
+                    <p>Através de estratégias avançadas e protocolos personalizados, ela já transformou a trajetória de centenas de pacientes, guiando-os para uma vida de liberdade e alta performance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="beneficios" class="section benefits">
+        <div class="container">
+            <div class="section-header reveal">
+                <p>Transformação</p>
+                <h2>A excelência de viver <span class="accent">sem dependências</span></h2>
+            </div>
+            <div class="ben-grid">
+                <div class="ben-card reveal">
+                    <span class="icon">🫁</span>
+                    <h3>Revitalização Física</h3>
+                    <p>Restaure sua capacidade respiratória, recupere o fôlego e experimente um aumento significativo na sua energia diária e longevidade.</p>
+                </div>
+                <div class="ben-card reveal delay-1">
+                    <span class="icon">🕊️</span>
+                    <h3>Liberdade Plena</h3>
+                    <p>Desvincule-se da necessidade constante de pausas para o cigarro. Assuma o controle de suas emoções frente ao estresse.</p>
+                </div>
+                <div class="ben-card reveal delay-2">
+                    <span class="icon">✨</span>
+                    <h3>Estética e Vitalidade</h3>
+                    <p>Melhore a oxigenação da pele, recupere o brilho natural, combata o envelhecimento precoce e desperte seus sentidos de olfato e paladar.</p>
+                </div>
+                <div class="ben-card reveal">
+                    <span class="icon">💎</span>
+                    <h3>Qualidade de Vida</h3>
+                    <p>Eleve seu bem-estar geral com noites de sono mais reparadoras e maior disposição para atividades de lazer e alta performance.</p>
+                </div>
+                <div class="ben-card reveal delay-1">
+                    <span class="icon">📈</span>
+                    <h3>Retorno do Investimento</h3>
+                    <p>Redirecione recursos valiosos, antes destinados ao tabagismo, para investimentos, experiências premium e aquilo que realmente importa.</p>
+                </div>
+                <div class="ben-card reveal delay-2">
+                    <span class="icon">🥂</span>
+                    <h3>Presença Impecável</h3>
+                    <p>Livre-se de odores indesejados em roupas e ambientes, projetando uma imagem pessoal e profissional impecável e confiante.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Steps -->
+    <section id="programa" class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <p>Metodologia</p>
+                <h2>O caminho para a <span class="accent">liberdade</span></h2>
+            </div>
+            <div class="steps-container">
+                <div class="step-card reveal">
+                    <h3>Mapeamento Diagnóstico</h3>
+                    <p>Avaliação profunda do seu perfil clínico e padrão de dependência, identificando gatilhos emocionais e comportamentais.</p>
+                </div>
+                <div class="step-card reveal delay-1">
+                    <h3>Estratégia Personalizada</h3>
+                    <p>Desenvolvimento de um plano de ação singular, desenhado exclusivamente para a sua rotina e necessidades biológicas.</p>
+                </div>
+                <div class="step-card reveal delay-2">
+                    <h3>Intervenção Estruturada</h3>
+                    <p>Acesso a ferramentas digitais exclusivas, protocolos guiados pela Dra. Thadila e missões diárias de reprogramação de hábitos.</p>
+                </div>
+                <div class="step-card reveal delay-3">
+                    <h3>Manutenção de Resultados</h3>
+                    <p>Acompanhamento focado na prevenção de recaídas (Botão SOS) e na consolidação de um novo estilo de vida definitivo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="depoimentos" class="section benefits">
+        <div class="container">
+            <div class="section-header reveal">
+                <p>Legado</p>
+                <h2>Histórias de <span class="accent">sucesso</span></h2>
+            </div>
+            <div class="test-grid">
+                <div class="test-card reveal">
+                    <div class="stars">★★★★★</div>
+                    <p>A abordagem da Dra. Thadila é incomparável. O rigor científico somado à praticidade do ambiente digital me permitiu parar de fumar sem comprometer minha agenda executiva.</p>
+                    <div class="author">Roberto V. — Empresário</div>
+                </div>
+                <div class="test-card reveal delay-1">
+                    <div class="stars">★★★★★</div>
+                    <p>Tentei diversos métodos ao longo de 15 anos. O diferencial deste programa é o suporte sofisticado e a inteligência emocional por trás das missões diárias.</p>
+                    <div class="author">Helena C. — Arquiteta</div>
+                </div>
+                <div class="test-card reveal delay-2">
+                    <div class="stars">★★★★★</div>
+                    <p>O Botão SOS foi fundamental durante viagens de negócios sob alta pressão. Sinto-me renovado, com mais clareza mental e energia para meus projetos.</p>
+                    <div class="author">Marcelo T. — Diretor de Inovação</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans Section -->
+    <section id="planos" class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <p>Investimento</p>
+                <h2>Selecione o acesso ideal para <span class="accent">o seu momento</span></h2>
+            </div>
+            <div class="price-grid">
+                <!-- Plan 1 -->
+                <div class="price-card reveal">
+                    <h3>Essential</h3>
+                    <div class="price">R$ 497<span>/único</span></div>
+                    <ul>
+                        <li>Avaliação clínica digital inicial</li>
+                        <li>Guia estratégico exclusivo</li>
+                        <li>Plano de ação personalizado</li>
+                        <li>Acesso ao conteúdo por 30 dias</li>
+                        <li>Suporte básico via concierge</li>
+                    </ul>
+                    <a href="#" class="btn btn-outline">Selecionar Essential</a>
+                </div>
+
+                <!-- Plan 2 -->
+                <div class="price-card premium reveal delay-1">
+                    <h3>Premium Experience</h3>
+                    <div class="price">R$ 1.497<span>/único</span></div>
+                    <ul>
+                        <li><strong>Tudo do plano Essential</strong></li>
+                        <li>Acesso total à plataforma (90 dias)</li>
+                        <li>Mapeamento avançado de gatilhos</li>
+                        <li>Ferramenta Botão SOS Anti-Recaída</li>
+                        <li>Comunidade de networking restrita</li>
+                        <li>Sessão de alinhamento em grupo</li>
+                        <li>Acompanhamento premium e gamificação</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Garantir Acesso Premium</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section benefits">
+        <div class="container">
+            <div class="section-header reveal">
+                <p>Esclarecimentos</p>
+                <h2>Dúvidas <span class="accent">Frequentes</span></h2>
+            </div>
+            <div class="faq-container reveal">
+                <div class="faq-item">
+                    <button class="faq-q">A plataforma requer horários fixos de acesso? <span class="icon">+</span></button>
+                    <div class="faq-a">
+                        <div class="faq-a-content">
+                            Não. O programa foi desenhado para profissionais de alta performance, permitindo que você acesse as missões e protocolos no momento mais adequado da sua rotina, garantindo total flexibilidade e discrição.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">Preciso realizar consultas presenciais? <span class="icon">+</span></button>
+                    <div class="faq-a">
+                        <div class="faq-a-content">
+                            Todo o acompanhamento base do programa é 100% digital e estruturado. Contudo, em casos onde o mapeamento diagnóstico indicar a necessidade, a equipe da Dra. Thadila orientará sobre passos adicionais ou prescrições específicas.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">O método é eficaz para tabagistas de longa data? <span class="icon">+</span></button>
+                    <div class="faq-a">
+                        <div class="faq-a-content">
+                            Absolutamente. A metodologia é embasada em psiquiatria comportamental avançada e adapta-se à intensidade e tempo de dependência de cada paciente, desconstruindo hábitos enraizados através de técnicas validadas.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">O que é a ferramenta Botão SOS? <span class="icon">+</span></button>
+                    <div class="faq-a">
+                        <div class="faq-a-content">
+                            É um recurso exclusivo do plano Premium Experience, projetado para atuar nos picos de fissura (craving). Ao acioná-lo, você recebe intervenções imediatas guiadas, ajudando a dissipar a urgência fisiológica e psicológica do momento.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="section cta-section">
+        <div class="container reveal">
+            <h2>O mais alto padrão de cuidado para o momento mais <span class="accent">decisivo da sua saúde</span></h2>
+            <p style="margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto;">O momento de elevar sua qualidade de vida é agora. Junte-se ao seleto grupo de pessoas que escolheram viver com excelência.</p>
+            <a href="#planos" class="btn btn-primary">Iniciar Transformação</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="#" class="footer-logo">Dra. Thadila<span>.</span></a>
+                    <p style="max-width: 300px; margin-bottom: 1.5rem;">Psiquiatria de excelência aplicada ao tratamento do tabagismo. Acolhimento, discrição e resultados.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        </a>
+                        <a href="#" aria-label="LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        </a>
+                        <a href="#" aria-label="Email">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Institucional</h4>
+                    <ul>
+                        <li><a href="#sobre">A Especialista</a></li>
+                        <li><a href="#beneficios">Benefícios</a></li>
+                        <li><a href="#programa">A Metodologia</a></li>
+                        <li><a href="#planos">Investimento</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Jurídico</h4>
+                    <ul>
+                        <li><a href="#">Termos de Acesso</a></li>
+                        <li><a href="#">Políticas de Privacidade</a></li>
+                        <li><a href="#">Adequação à LGPD</a></li>
+                        <li><a href="#">Aviso Legal</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Dra. Thadila Fogaça. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/5511999999999" target="_blank" class="whatsapp-float" aria-label="Contato WhatsApp">
+        <svg viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+
+    <!-- Scripts -->
+    <script>
+        // Header Scroll Effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(5, 5, 5, 0.95)';
+                header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.5)';
+            } else {
+                header.style.background = 'rgba(5, 5, 5, 0.8)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('mobile-menu');
+        const navbar = document.getElementById('navbar');
+        const navLinks = document.querySelectorAll('.nav-link, .nav-cta');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navbar.classList.toggle('active');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navbar.classList.remove('active');
+            });
+        });
+
+        // FAQ Accordion
+        const faqQuestions = document.querySelectorAll('.faq-q');
+        faqQuestions.forEach(q => {
+            q.addEventListener('click', () => {
+                const answer = q.nextElementSibling;
+                const isActive = q.classList.contains('active');
+
+                // Close all
+                document.querySelectorAll('.faq-q').forEach(otherQ => {
+                    otherQ.classList.remove('active');
+                    otherQ.nextElementSibling.style.maxHeight = null;
+                });
+
+                if (!isActive) {
+                    q.classList.add('active');
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                }
+            });
+        });
+
+        // Intersection Observer for Reveal Animations
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, revealOptions);
+
+        revealElements.forEach(el => {
+            revealOnScroll.observe(el);
+        });
+    </script>
 </body>
 </html>
